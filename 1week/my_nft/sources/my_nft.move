@@ -1,9 +1,24 @@
-/*
-/// Module: my_nft
 module my_nft::my_nft;
-*/
 
-// For Move coding conventions, see
-// https://docs.sui.io/concepts/sui-move-concepts/conventions
+use std::string::{String};
+
+public struct MyNFT has key, store {
+  id: UID,
+  name: String,
+  img_url: String
+}
+
+public fun mint_self(name: String, img_url: String, ctx: &mut TxContext) {
+  let nft = MyNFT {
+    id: object::new(ctx),
+    name,
+    img_url
+  };
+
+  transfer::transfer(nft, ctx.sender());
+}
+
+
+
 
 
