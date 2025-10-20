@@ -8,7 +8,7 @@ public struct MyNFT has key, store {
   img_url: String
 }
 
-public fun mint_self(name: String, img_url: String, ctx: &mut TxContext) {
+entry fun mint_self(name: String, img_url: String, ctx: &mut TxContext) {
   let nft = MyNFT {
     id: object::new(ctx),
     name,
