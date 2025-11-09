@@ -5,14 +5,12 @@ public struct MyItem has key, store {
 }
 
 // Entry Function
-entry fun mint_and_transfer_item(ctx: &mut TxContext) {
-  let item = MyItem {
-    id: object::new(ctx)
-  };
+entry fun create_and_transfer_item(ctx: &mut TxContext) {
+  let item = create_item(ctx);
   transfer::transfer(item, ctx.sender());
 }
 
-public fun mint_item(ctx: &mut TxContext): MyItem {
+public fun create_item(ctx: &mut TxContext): MyItem {
   MyItem {
     id: object::new(ctx)
   }
