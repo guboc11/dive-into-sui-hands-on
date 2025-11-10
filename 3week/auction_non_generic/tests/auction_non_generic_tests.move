@@ -1,6 +1,6 @@
 #[test_only]
 module auction_non_generic::auction_non_generic_tests;
-// uncomment this line to import the module
+
 use auction_non_generic::auction_non_generic::{Auction, create_item, create_auction, create_bid, bid};
 
 use sui::test_scenario as ts;
@@ -11,10 +11,6 @@ const ENotImplemented: u64 = 0;
 
 #[test]
 fun test_auction_non_generic() {
-    // pass
-    // 코인 타입 정의
-
-
     // Initialize a mock sender address
     let addr1 = @0xA;
     // Begins a multi-transaction scenario with addr1 as the sender
