@@ -8,9 +8,9 @@ use sui::coin::{Coin};
 use sui::dynamic_field;
 
 // Shared Object
-public struct Auction<T: key + store> has key, store {
+public struct Auction has key, store {
   id: UID,
-  item: T,
+  item: MyItem,
 }
 
 // Owned Object
@@ -37,7 +37,7 @@ public fun create_item(ctx: &mut TxContext): MyItem {
   }
 }
 
-public fun create_auction<T: key + store>(item: T, ctx: &mut TxContext) {
+public fun create_auction(item: MyItem, ctx: &mut TxContext) {
   let auction = Auction{
     id: object::new(ctx),
     item: item
@@ -46,7 +46,7 @@ public fun create_auction<T: key + store>(item: T, ctx: &mut TxContext) {
   transfer::share_object(auction);
 }
 
-public fun create_bid<T: key + store>(auction: &Auction<T>, coin: Coin<SUI>, ctx: &mut TxContext): Bid {
+public fun create_bid(auction: &Auction, coin: Coin<SUI>, ctx: &mut TxContext): Bid {
   Bid{
     id: object::new(ctx),
     item_id: object::id(&auction.item),
@@ -55,7 +55,7 @@ public fun create_bid<T: key + store>(auction: &Auction<T>, coin: Coin<SUI>, ctx
   }
 }
 
-public fun bid<T: key + store>(auction: &mut Auction<T>, bid: Bid) {
+public fun bid(auction: &mut Auction, bid: Bid) {
   // auction에 있는 item의 ID와 bid의 item_id 가 다르면 abort
   assert!(object::id(&auction.item) == bid.item_id);
 
