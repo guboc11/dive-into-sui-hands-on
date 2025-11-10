@@ -13,6 +13,10 @@ public struct Auction has key, store {
   item: MyItem,
 }
 
+public struct AuctionDynamicItem has key, store {
+  id: UID,
+}
+
 // Owned Object
 public struct Bid has key, store {
   id: UID,
@@ -43,6 +47,15 @@ public fun create_auction(item: MyItem, ctx: &mut TxContext) {
     item: item
   };
 
+  transfer::share_object(auction);
+}
+
+public fun create_auction_with_dynamic_item<T: key + store>(item: T, ctx: &mut TxContext) {
+  let mut auction = AuctionDynamicItem{
+    id: object::new(ctx)
+  };
+
+  dynamic_field::add(&mut auction.id, b"item", item);
   transfer::share_object(auction);
 }
 
