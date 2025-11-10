@@ -59,7 +59,9 @@ public fun bid(auction: &mut Auction, bid: Bid) {
   // auction에 있는 item의 ID와 bid의 item_id 가 다르면 abort
   assert!(object::id(&auction.item) == bid.item_id);
 
-  let old_bid = dynamic_field::remove_if_exists<String, Bid>(&mut auction.id, b"bid_key".to_string());
+  let old_bid = dynamic_field::remove_if_exists<String, Bid>(
+    &mut auction.id, b"bid_key".to_string()
+  );
 
   // dynamic field에서 bid_key라는 키값에 Bid가 없다면 다음 코드 실행
   if (old_bid.is_none()) {
