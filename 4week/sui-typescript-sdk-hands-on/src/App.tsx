@@ -19,14 +19,6 @@ function App() {
           <Heading>dApp Starter Template</Heading>
         </Box>
 
-        <button
-          onClick={async () => {
-            if (!account) return;
-          }}
-        >
-          Hello
-        </button>
-
         <Box>
           <ConnectButton />
         </Box>
