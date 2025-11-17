@@ -23,16 +23,7 @@ function App() {
           <ConnectButton />
         </Box>
       </Flex>
-      <Container>
-        <Container
-          mt="5"
-          pt="2"
-          px="4"
-          style={{ background: "var(--gray-a2)", minHeight: 500 }}
-        >
-          <WalletStatus />
-        </Container>
-      </Container>
+      <Container></Container>
     </>
   );
 }
