@@ -1,9 +1,6 @@
-import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
-import { WalletStatus } from "./WalletStatus";
 
 function App() {
-  const account = useCurrentAccount();
   return (
     <>
       <Flex
