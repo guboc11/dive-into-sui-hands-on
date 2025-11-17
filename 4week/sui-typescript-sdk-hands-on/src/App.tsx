@@ -19,9 +19,7 @@ function App() {
           <Heading>dApp Starter Template</Heading>
         </Box>
 
-        <Box>
-          <ConnectButton />
-        </Box>
+        <Box>{/* Connect Button */}</Box>
       </Flex>
       <Container></Container>
     </>
